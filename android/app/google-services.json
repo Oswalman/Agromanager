@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "940160811311",
+    "firebase_url": "https://agromanager-dc3e8.firebaseio.com",
+    "project_id": "agromanager-dc3e8",
+    "storage_bucket": "agromanager-dc3e8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:940160811311:android:abfa012bee63aea4fba1da",
+        "android_client_info": {
+          "package_name": "net.ddns.agromanager.agromanager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "940160811311-iktfmrmhe51029vhckq96r6o8ps5ftmc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4uknQupfcEwGeYkSkgoyaz0NhwEoikZY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "940160811311-iktfmrmhe51029vhckq96r6o8ps5ftmc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
