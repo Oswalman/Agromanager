@@ -23,7 +23,7 @@ class User {
         username = snapshot['username'] ?? '',
         password = snapshot['password'] ?? '',
         email = snapshot['email'] ?? '',
-        name = snapshot['email'] ?? '',
+        name = snapshot['name'] ?? '',
         lastName = snapshot['lastName'] ?? '';
 
   toJson() {
