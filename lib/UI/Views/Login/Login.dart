@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-final _formKey = GlobalKey<FormState>();
+
 
 class Login extends StatefulWidget {
   @override
@@ -9,6 +9,7 @@ class Login extends StatefulWidget {
 }
 
 class LoginSign extends State<Login> {
+  final _formKey = GlobalKey<FormState>();
   bool _isLoading = false;
 
   Widget showCircularProgress() {
@@ -37,20 +38,25 @@ class LoginSign extends State<Login> {
                 Padding(
                     padding: const EdgeInsets.fromLTRB(30.0, 50.0, 30.0, 0.0),
                     child: TextFormField(
+                      maxLines: 1,
+                      keyboardType: TextInputType.emailAddress,
                       decoration: const InputDecoration(
                         icon: Icon(Icons.account_box, color: Colors.black),
                         hintText: 'Correo',
                       ),
                       validator: (value) {
                         if (value.isEmpty) {
-                          return 'Por favor, escribe el nombre de usuario';
+                          return 'Por favor, escribe el correo';
                         }
                         return null;
                       },
+                      onSaved: (value) => _email = value.trim(),
                     )),
                 Padding(
                     padding: const EdgeInsets.fromLTRB(30.0, 20.0, 30.0, 0.0),
                     child: TextFormField(
+                      maxLines: 1,
+                      autofocus: false,
                       obscureText: true,
                       decoration: const InputDecoration(
                         icon: Icon(Icons.lock, color: Colors.black),
@@ -62,6 +68,7 @@ class LoginSign extends State<Login> {
                         }
                         return null;
                       },
+                      onSaved: (value) => _password = value.trim()
                     )),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(30.0, 20.0, 30.0, 0.0),
@@ -91,14 +98,13 @@ class LoginSign extends State<Login> {
       bottomNavigationBar: BottomAppBar(
           child: Container(
               height: 20.0,
-              child: Row(
-                children: <Widget>[
-                  Center(
-                      child: Align(
-                          alignment: Alignment.bottomCenter,
-                          child: Text('AGROMANAGER')))
-                ],
-              ))),
+              child: Center(
+                  child: Align(
+                      alignment: Alignment.bottomCenter,
+                      child: Text('AGROMANAGER'))
+                            )
+                            )
+                                        ) ,
       body: Stack(
         children: <Widget>[showForm(), showCircularProgress()],
       ),
