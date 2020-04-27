@@ -2,20 +2,28 @@ import 'package:flutter/material.dart';
 import 'package:Agromanager/core/viewmodels/BaseAuth.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:Agromanager/UI/Views/Home/Start.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key, this.auth, this.userId, this.logoutCallback})
       : super(key: key);
 
-  final BaseAuth auth;
-  final VoidCallback logoutCallback;
-  final String userId;
+  HomePage.layout({this.layoutGen});
+
+  Widget layoutGen;
+  BaseAuth auth;
+  VoidCallback logoutCallback;
+  String userId;
 
   @override
-  State<StatefulWidget> createState() => new _HomePageState();
+  State<StatefulWidget> createState() => new _HomePageState(layoutGen:layoutGen);
 }
 
 class _HomePageState extends State<HomePage> {
+  _HomePageState({this.layoutGen});
+  Widget layoutGen;
+
+
   signOut() async {
     try {
       await widget.auth.signOut();
@@ -30,10 +38,12 @@ class _HomePageState extends State<HomePage> {
     return new Scaffold(
       appBar: new AppBar(
         actions: <Widget>[
-          new FlatButton(
-              child: new Text('Logout',
-                  style: new TextStyle(fontSize: 17.0, color: Colors.white)),
-              onPressed: signOut)
+          Builder(
+              builder: (context) => new IconButton(
+                  icon: const Icon(Icons.more_vert),
+                  onPressed: () {
+                    Scaffold.of(context).openEndDrawer();
+                  }))
         ],
         leading: Builder(
           builder: (BuildContext context) {
@@ -47,6 +57,36 @@ class _HomePageState extends State<HomePage> {
           },
         ),
         title: Align(alignment: Alignment.bottomCenter, child: Text('INICIO')),
+      ),
+      endDrawer: Container(
+        height: 100,
+        child: Drawer(
+          child: Container(
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment
+                    .bottomCenter, // 10% of the width, so there are ten blinds.
+                colors: [
+                  const Color(0xFF638F6C),
+                  const Color(0xFF03240A)
+                ], // whitish to gray
+                tileMode:
+                    TileMode.clamp, // repeats the gradient over the canvas
+              )),
+              child: ListView(children: <Widget>[
+                ListTile(
+                  leading: new Icon(
+                    Icons.cancel,
+                  ),
+                  title: Text('Cerrar Sesión',
+                      style: TextStyle(color: Colors.white)),
+                  onTap: () {
+                    signOut();
+                  },
+                )
+              ])),
+        ),
       ),
       drawer: Drawer(
         child: ListView(
@@ -187,11 +227,11 @@ class _HomePageState extends State<HomePage> {
                                     }),
                                 IconButton(
                                     icon: new Icon(
-                                      FontAwesomeIcons.page4,
+                                      FontAwesomeIcons.globeAmericas,
                                       color: Colors.white,
                                     ),
                                     onPressed: () async {
-                                      const url = 'https://github.com/Oswalman';
+                                      const url = 'http://agromanager.ddns.net';
                                       if (await canLaunch(url)) {
                                         await launch(url);
                                       } else {
@@ -214,7 +254,7 @@ class _HomePageState extends State<HomePage> {
             image: DecorationImage(
                 image: AssetImage("assets/Fondo_Global.png"),
                 fit: BoxFit.cover)),
-        child: new Text("Has iniciado sesión"),
+        child: Start(),
       ),
     );
   }
