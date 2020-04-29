@@ -3,12 +3,14 @@ import 'package:Agromanager/core/viewmodels/BaseAuth.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:Agromanager/UI/Views/Home/Start.dart';
+import 'package:Agromanager/UI/Views/Terminos/Terminos.dart';
+import 'package:Agromanager/UI/Views/Inventario/Inventario.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key, this.auth, this.userId, this.logoutCallback})
       : super(key: key);
 
-  HomePage.layout({this.layoutGen});
+  HomePage.layout(this.layoutGen);
 
   Widget layoutGen;
   BaseAuth auth;
@@ -16,13 +18,19 @@ class HomePage extends StatefulWidget {
   String userId;
 
   @override
-  State<StatefulWidget> createState() => new _HomePageState(layoutGen:layoutGen);
+  State<StatefulWidget> createState() =>
+      new _HomePageState(layoutGen: layoutGen);
 }
 
 class _HomePageState extends State<HomePage> {
   _HomePageState({this.layoutGen});
   Widget layoutGen;
 
+  @override
+  void initState() {
+    layoutGen = layoutGen != null ? layoutGen : Start();
+    super.initState();
+  }
 
   signOut() async {
     try {
@@ -133,7 +141,11 @@ class _HomePageState extends State<HomePage> {
                               ),
                               onTap: () {
                                 // Update the state of the app.
-                                // ...
+                                final route =
+                                    MaterialPageRoute(builder: (context) {
+                                  return Start();
+                                });
+                                Navigator.push(context, route);
                               },
                             ),
                             ListTile(
@@ -144,6 +156,11 @@ class _HomePageState extends State<HomePage> {
                               onTap: () {
                                 // Update the state of the app.
                                 // ...
+                                final route =
+                                    MaterialPageRoute(builder: (context) {
+                                  return Inventario();
+                                });
+                                Navigator.push(context, route);
                               },
                             ),
                             ListTile(
@@ -183,8 +200,16 @@ class _HomePageState extends State<HomePage> {
                                   title: Text('AYUDA',
                                       style: TextStyle(color: Colors.white))),
                               ListTile(
-                                  title: Text('TÉRMINOS Y CONDICIONES',
-                                      style: TextStyle(color: Colors.white))),
+                                title: Text('TÉRMINOS Y CONDICIONES',
+                                    style: TextStyle(color: Colors.white)),
+                                onTap: () {
+                                  final route =
+                                      MaterialPageRoute(builder: (context) {
+                                    return Terminos();
+                                  });
+                                  Navigator.push(context, route);
+                                },
+                              ),
                               Row(children: <Widget>[
                                 IconButton(
                                     icon: new Icon(
@@ -248,14 +273,13 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       body: new Container(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        decoration: BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage("assets/Fondo_Global.png"),
-                fit: BoxFit.cover)),
-        child: Start(),
-      ),
+        height:MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage("assets/Fondo_Global.png"),
+                  fit: BoxFit.cover)),
+          child: layoutGen),
     );
   }
 }

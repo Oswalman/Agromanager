@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:Agromanager/core/viewmodels/BaseAuth.dart';
-import 'package:Agromanager/UI/Views/Register/Register.dart';
+import 'package:Agromanager/UI/Views/Login/Login.dart';
 
-class Login extends StatefulWidget {
-  Login({this.auth, this.loginCallback});
+class Register extends StatefulWidget {
+  Register({this.auth});
   final BaseAuth auth;
-  final VoidCallback loginCallback;
+
 
   @override
-  State<StatefulWidget> createState() => new LoginSign();
+  State<StatefulWidget> createState() => new RegisterSign();
 }
 
-class LoginSign extends State<Login> {
+class RegisterSign extends State<Register> {
   final _formKey = GlobalKey<FormState>();
 
   bool _isLoading;
@@ -29,22 +29,14 @@ class LoginSign extends State<Login> {
     if (validateAndSave()) {
       String userId = "";
       try {
-        if (_isLoginForm) {
-          userId = await widget.auth.signIn(_email, _password);
-          print('Signed in: $userId');
-        } else {
-          userId = await widget.auth.signUp(_email, _password);
-          //widget.auth.sendEmailVerification();
-          //_showVerifyEmailSentDialog();
-          print('Signed up user: $userId');
-        }
+        userId = await widget.auth.signUp(_email, _password);
+        //widget.auth.sendEmailVerification();
+        //_showVerifyEmailSentDialog();
+        print('Signed up user: $userId');
+
         setState(() {
           _isLoading = false;
         });
-
-        if (userId.length > 0 && userId != null && _isLoginForm) {
-          widget.loginCallback();
-        }
       } catch (e) {
         print('Error: $e');
         setState(() {
@@ -85,16 +77,43 @@ class LoginSign extends State<Login> {
                 Image(
                   image: AssetImage('assets/Fondo_Login.png'),
                   width: 600,
-                  height: 340,
+                  height: 100,
                   fit: BoxFit.cover,
                 ),
+                FlatButton(
+                  onPressed: () {
+                    final route = MaterialPageRoute(builder: (context) {
+                      return Login();
+                    });
+                    Navigator.push(context, route);
+                  },
+                  child: Text('Atras'),
+                ),
+                Padding(
+                    padding: const EdgeInsets.fromLTRB(30.0, 50.0, 30.0, 0.0),
+                    child: Title(
+                        color: Colors.black,
+                        child: Text('Crear una cuenta nueva'))),
+                Padding(
+                    padding: const EdgeInsets.fromLTRB(30.0, 50.0, 30.0, 0.0),
+                    child: TextFormField(
+                      maxLines: 1,
+                      keyboardType: TextInputType.text,
+                      decoration: const InputDecoration(
+                        icon: Icon(Icons.account_box, color: Colors.black),
+                        hintText: 'Nombre',
+                      ),
+                      validator: (value) =>
+                          value.isEmpty ? 'Nombre no puede estar vacio' : null,
+                      onSaved: (value) => _email = value.trim(),
+                    )),
                 Padding(
                     padding: const EdgeInsets.fromLTRB(30.0, 50.0, 30.0, 0.0),
                     child: TextFormField(
                       maxLines: 1,
                       keyboardType: TextInputType.emailAddress,
                       decoration: const InputDecoration(
-                        icon: Icon(Icons.account_box, color: Colors.black),
+                        icon: Icon(Icons.email, color: Colors.black),
                         hintText: 'Correo',
                       ),
                       validator: (value) =>
@@ -123,32 +142,9 @@ class LoginSign extends State<Login> {
                       color: Color(0xff00A79B),
                       textColor: Colors.white,
                       onPressed: validateAndSubmit,
-                      child: Text('INICIAR SESIÓN'),
+                      child: Text('CREAR CUENTA'),
                     ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(30.0, 20.0, 30.0, 0.0),
-                  child: Row(children: <Widget>[
-                    Expanded(
-                        child: Text(
-                      '¿No tienes una cuenta?',
-                      style: TextStyle(color: Color(0xff707070)),
-                    )),
-                    Expanded(
-                        child: FlatButton(
-                            child: Text(
-                              'CREAR CUENTA',
-                              style: TextStyle(color: Color(0xff00A79B)),
-                            ),
-                            onPressed: () {
-                              final route =
-                                  MaterialPageRoute(builder: (context) {
-                                return Register(auth: widget.auth);
-                              });
-                              Navigator.push(context, route);
-                            }))
-                  ]),
                 )
               ],
             )));

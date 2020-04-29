@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:Agromanager/UI/Views/Home/Home.dart';
 
 class Inventario extends StatefulWidget {
   @override
@@ -9,7 +10,7 @@ class Inventario extends StatefulWidget {
 class InventarioWidget extends State<Inventario> {
   @override
   Widget build(BuildContext context) {
-    return Stack(
+    return HomePage.layout(Stack(
       children: <Widget>[
         Center(
             child: ListView(
@@ -46,6 +47,6 @@ class InventarioWidget extends State<Inventario> {
           ],
         )),
       ],
-    );
+    )); 
   }
 }

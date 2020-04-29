@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:Agromanager/UI/Views/Inventario/Inventario.dart';
 
+
 class Start extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => new StartWidget();
