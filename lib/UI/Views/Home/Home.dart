@@ -34,7 +34,9 @@ class _HomePageState extends State<HomePage> {
 
   signOut() async {
     try {
+      print('no');
       await widget.auth.signOut();
+      print('corrio');
       widget.logoutCallback();
     } catch (e) {
       print(e);
@@ -143,7 +145,7 @@ class _HomePageState extends State<HomePage> {
                                 // Update the state of the app.
                                 final route =
                                     MaterialPageRoute(builder: (context) {
-                                  return Start();
+                                  return HomePage.layout(Start());
                                 });
                                 Navigator.push(context, route);
                               },

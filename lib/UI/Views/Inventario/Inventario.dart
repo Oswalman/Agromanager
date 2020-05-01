@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:Agromanager/UI/Views/Home/Home.dart';
+import 'package:Agromanager/UI/Views/Inventario/TipoInsumo/TipoInsumo.dart';
 
 class Inventario extends StatefulWidget {
   @override
@@ -25,7 +26,12 @@ class InventarioWidget extends State<Inventario> {
                       side: BorderSide(color: Color(0xff053D02))),
                   color: Color(0xffFFFFFF).withOpacity(0.5),
                   textColor: Colors.black,
-                  onPressed: () {},
+                  onPressed: () {
+                       final route = MaterialPageRoute(builder: (context){
+                      return TipoInsumoView();
+                    });
+                    Navigator.push(context, route);
+                  },
                   child: Text('INSUMOS'),
                 ),
               ),
