@@ -3,7 +3,6 @@ import 'Views/Login/Login.dart';
 import '../core/viewmodels/BaseAuth.dart';
 import 'Views/Home/home.dart';
 
-
 enum AuthStatus {
   NOT_DETERMINED,
   NOT_LOGGED_IN,
@@ -18,6 +17,7 @@ class RootPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => new _RootPageState();
 }
+
 class _RootPageState extends State<RootPage> {
   AuthStatus authStatus = AuthStatus.NOT_DETERMINED;
   String _userId = "";
@@ -38,6 +38,8 @@ class _RootPageState extends State<RootPage> {
 
   void loginCallback() {
     widget.auth.getCurrentUser().then((user) {
+      print("INICIÓOOOO");
+      print(user);
       setState(() {
         _userId = user.uid.toString();
       });
@@ -48,6 +50,17 @@ class _RootPageState extends State<RootPage> {
   }
 
   void logoutCallback() {
+    if (_userId != null || _userId != "") {
+      print("Redirreción");
+      final route = MaterialPageRoute(builder: (context) {
+        return Login(
+          auth: widget.auth,
+          loginCallback: loginCallback,
+        );
+      });
+      Navigator.push(context, route);
+    }
+
     setState(() {
       authStatus = AuthStatus.NOT_LOGGED_IN;
       _userId = "";
@@ -70,12 +83,14 @@ class _RootPageState extends State<RootPage> {
         return buildWaitingScreen();
         break;
       case AuthStatus.NOT_LOGGED_IN:
+        print("CAMBIO SESIÓN");
         return new Login(
           auth: widget.auth,
           loginCallback: loginCallback,
         );
         break;
       case AuthStatus.LOGGED_IN:
+        print("LOGUEADO");
         if (_userId.length > 0 && _userId != null) {
           return new HomePage(
             userId: _userId,

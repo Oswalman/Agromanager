@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return new MultiProvider(
         child: MaterialApp(
-            title: 'Agromanager',
+            title: 'Agromanager',           
             debugShowCheckedModeBanner: false,
             theme: new ThemeData(
               primarySwatch: Colors.green,

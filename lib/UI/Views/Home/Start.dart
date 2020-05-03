@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:Agromanager/UI/Views/Inventario/Inventario.dart';
-
+import 'package:Agromanager/core/viewmodels/BaseAuth.dart';
 
 class Start extends StatefulWidget {
+  Start({Key key, this.auth, this.userId, this.logoutCallback})
+      : super(key: key);
+
+
+  BaseAuth auth;
+  VoidCallback logoutCallback;
+  String userId;
+
   @override
   State<StatefulWidget> createState() => new StartWidget();
 }
@@ -27,11 +35,14 @@ class StartWidget extends State<Start> {
                   color: Color(0xffFFFFFF).withOpacity(0.5),
                   textColor: Colors.black,
                   onPressed: () {
-                    final route = MaterialPageRoute(builder: (context){
-                      return Inventario();
+                    final route = MaterialPageRoute(builder: (context) {
+                      return Inventario(
+                        auth: widget.auth,
+                        userId: widget.userId,
+                        logoutCallback: widget.logoutCallback,
+                      );
                     });
                     Navigator.push(context, route);
-
                   },
                   child: Text('INVENTARIO'),
                 ),

@@ -43,10 +43,12 @@ class LoginSign extends State<Login> {
         });
 
         if (userId.length > 0 && userId != null && _isLoginForm) {
+          print("LLamó callback");
           widget.loginCallback();
         }
       } catch (e) {
         print('Error: $e');
+        print('In this error');
         setState(() {
           _isLoading = false;
           _errorMessage = e.message;

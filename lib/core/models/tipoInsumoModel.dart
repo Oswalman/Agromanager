@@ -1,6 +1,4 @@
-import 'dart:math';
 
-import 'package:flutter/cupertino.dart';
 
 class TipoInsumo {
   String id;
