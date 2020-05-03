@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:Agromanager/UI/Views/Inventario/Inventario.dart';
+import 'package:Agromanager/UI/Views/Contabilidad/Contabilidad.dart';
 import 'package:Agromanager/core/viewmodels/BaseAuth.dart';
 
 class Start extends StatefulWidget {
@@ -49,7 +50,7 @@ class StartWidget extends State<Start> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(30.0, 20.0, 30.0, 0.0),
+              padding: const EdgeInsets.fromLTRB(30.0, 20.0, 30.0, 20.0),
               child: SizedBox(
                 height: 40.0,
                 child: RaisedButton(
@@ -57,8 +58,17 @@ class StartWidget extends State<Start> {
                       side: BorderSide(color: Color(0xff053D02))),
                   color: Color(0xffFFFFFF).withOpacity(0.5),
                   textColor: Colors.black,
-                  onPressed: () {},
-                  child: Text('GASTOS'),
+                  onPressed: () {
+                    final route = MaterialPageRoute(builder: (context) {
+                      return Contabilidad(
+                        auth: widget.auth,
+                        userId: widget.userId,
+                        logoutCallback: widget.logoutCallback,
+                      );
+                    });
+                    Navigator.push(context, route);
+                  },
+                  child: Text('CONTABILIDAD'),
                 ),
               ),
             ),

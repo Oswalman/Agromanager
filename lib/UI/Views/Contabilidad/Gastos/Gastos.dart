@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:Agromanager/UI/Views/Inventario/TipoInsumo/TipoInsumo.dart';
-
+//import 'package:Agromanager/UI/Views/Gastos/TipoInsumo/TipoInsumo.dart';
 import 'package:Agromanager/core/viewmodels/BaseAuth.dart';
 
 import 'package:Agromanager/UI/Widgets/Appbar.dart';
@@ -9,8 +8,8 @@ import 'package:Agromanager/UI/Widgets/EndDrawer.dart';
 import 'package:Agromanager/UI/Widgets/Fondo.dart';
 import 'package:Agromanager/UI/Widgets/DrawerWidget.dart';
 
-class Inventario extends StatefulWidget {
-  Inventario({Key key, this.auth, this.userId, this.logoutCallback})
+class Gastos extends StatefulWidget {
+  Gastos({Key key, this.auth, this.userId, this.logoutCallback})
       : super(key: key);
 
   final BaseAuth auth;
@@ -18,14 +17,14 @@ class Inventario extends StatefulWidget {
   final String userId;
 
   @override
-  State<StatefulWidget> createState() => new InventarioWidget();
+  State<StatefulWidget> createState() => new GastosWidget();
 }
 
-class InventarioWidget extends State<Inventario> {
+class GastosWidget extends State<Gastos> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppbarWidget(title: "Inventario"),
+        appBar: AppbarWidget(title: "GASTOS"),
         endDrawer: EndDrawer(context, widget.auth, widget.logoutCallback),
         drawer: DrawerWidget(
             context, widget.auth, widget.logoutCallback, widget.userId),
@@ -47,16 +46,7 @@ class InventarioWidget extends State<Inventario> {
                               side: BorderSide(color: Color(0xff053D02))),
                           color: Color(0xffFFFFFF).withOpacity(0.5),
                           textColor: Colors.black,
-                          onPressed: () {
-                            final route = MaterialPageRoute(builder: (context) {
-                              return TipoInsumoView(
-                                auth: widget.auth,
-                                userId: widget.userId,
-                                logoutCallback: widget.logoutCallback,
-                              );
-                            });
-                            Navigator.push(context, route);
-                          },
+                          onPressed: () {},
                           child: Text('INSUMOS'),
                         ),
                       ),
@@ -72,6 +62,34 @@ class InventarioWidget extends State<Inventario> {
                           textColor: Colors.black,
                           onPressed: () {},
                           child: Text('EQUIPOS'),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(30.0, 20.0, 30.0, 0.0),
+                      child: SizedBox(
+                        height: 40.0,
+                        child: RaisedButton(
+                          shape: RoundedRectangleBorder(
+                              side: BorderSide(color: Color(0xff053D02))),
+                          color: Color(0xffFFFFFF).withOpacity(0.5),
+                          textColor: Colors.black,
+                          onPressed: () {},
+                          child: Text('EMPLEADOS'),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(30.0, 20.0, 30.0, 0.0),
+                      child: SizedBox(
+                        height: 40.0,
+                        child: RaisedButton(
+                          shape: RoundedRectangleBorder(
+                              side: BorderSide(color: Color(0xff053D02))),
+                          color: Color(0xffFFFFFF).withOpacity(0.5),
+                          textColor: Colors.black,
+                          onPressed: () {},
+                          child: Text('ALIMENTACIÓN'),
                         ),
                       ),
                     ),
