@@ -9,8 +9,8 @@ import 'package:Agromanager/UI/Widgets/EndDrawer.dart';
 import 'package:Agromanager/UI/Widgets/Fondo.dart';
 import 'package:Agromanager/UI/Widgets/DrawerWidget.dart';
 
-class AddInsumo extends StatefulWidget {
-  AddInsumo({Key key, this.auth, this.userId, this.logoutCallback})
+class NewInsumo extends StatefulWidget {
+  NewInsumo({Key key, this.auth, this.userId, this.logoutCallback})
       : super(key: key);
 
   //---------------------------
@@ -20,10 +20,10 @@ class AddInsumo extends StatefulWidget {
   //---------------------------
 
   @override
-  _AddInsumoState createState() => _AddInsumoState();
+  State<StatefulWidget> createState() => _NewInsumoState();
 }
 
-class _AddInsumoState extends State<AddInsumo> {
+class _NewInsumoState extends State<NewInsumo> {
   final _formKey = GlobalKey<FormState>();
   String nombre;
   String descripcion;
@@ -61,9 +61,63 @@ class _AddInsumoState extends State<AddInsumo> {
                       height: 16,
                     ),
                     TextFormField(
+                        keyboardType: TextInputType.datetime,
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintText: 'Fecha',
+                          fillColor: Colors.grey[300],
+                          filled: true,
+                        ),
+                        validator: (value) {
+                          if (value.isEmpty) {
+                            return 'Por favor ingrese descripcion';
+                          }
+                        },
+                        onSaved: (value) => descripcion = value),
+                    TextFormField(
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintText: 'Unidad de medida',
+                          fillColor: Colors.grey[300],
+                          filled: true,
+                        ),
+                        validator: (value) {
+                          if (value.isEmpty) {
+                            return 'Por favor ingrese descripcion';
+                          }
+                        },
+                        onSaved: (value) => descripcion = value),
+                    TextFormField(
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintText: 'Precio unitario',
+                          fillColor: Colors.grey[300],
+                          filled: true,
+                        ),
+                        validator: (value) {
+                          if (value.isEmpty) {
+                            return 'Por favor ingrese descripcion';
+                          }
+                        },
+                        onSaved: (value) => descripcion = value),
+                    TextFormField(
                         decoration: InputDecoration(
                           border: InputBorder.none,
                           hintText: 'Descripcion',
+                          fillColor: Colors.grey[300],
+                          filled: true,
+                        ),
+                        validator: (value) {
+                          if (value.isEmpty) {
+                            return 'Por favor ingrese descripcion';
+                          }
+                        },
+                        onSaved: (value) => descripcion = value),
+                    TextFormField(
+                        keyboardType: TextInputType.number,
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintText: 'Cantidad',
                           fillColor: Colors.grey[300],
                           filled: true,
                         ),
