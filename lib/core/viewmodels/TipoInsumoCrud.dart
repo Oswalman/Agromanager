@@ -12,7 +12,7 @@ class CRUDTipoInsumo extends ChangeNotifier {
 
 
   Future<List<TipoInsumo>> fetchTipoInsumo() async {
-    var result = await _api.getDataCollection();
+    var result = await _api.getDataCollection('TipoInsumos');
     tipoInsumo = result.documents
         .map((doc) => TipoInsumo.fromMap(doc.data, doc.documentID))
         .toList();
@@ -20,26 +20,26 @@ class CRUDTipoInsumo extends ChangeNotifier {
   }
 
   Stream<QuerySnapshot> fetchTipoInsumosAsStream() {
-    return _api.streamDataCollection();
+    return _api.streamDataCollection('TipoInsumos');
   }
 
   Future<TipoInsumo> getTipoInsumoById(String id) async {
-    var doc = await _api.getDocumentById(id);
+    var doc = await _api.getDocumentById('TipoInsumos',id);
     return  TipoInsumo.fromMap(doc.data, doc.documentID) ;
   }
 
 
   Future removeTipoInsumo(String id) async{
-     await _api.removeDocument(id) ;
+     await _api.removeDocument('TipoInsumos',id) ;
      return ;
   }
   Future updateTipoInsumo(TipoInsumo data,String id) async{
-    await _api.updateDocument(data.toJson(), id) ;
+    await _api.updateDocument('TipoInsumos',data.toJson(), id) ;
     return ;
   }
 
   Future addTipoInsumo(TipoInsumo data) async{
-    var result  = await _api.addDocument(data.toJson()) ;
+    var result  = await _api.addDocument('TipoInsumos',data.toJson()) ;
 
     return ;
 
