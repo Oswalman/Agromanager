@@ -38,8 +38,6 @@ class _RootPageState extends State<RootPage> {
 
   void loginCallback() {
     widget.auth.getCurrentUser().then((user) {
-      print("INICIÓOOOO");
-      print(user);
       setState(() {
         _userId = user.uid.toString();
       });
@@ -50,17 +48,7 @@ class _RootPageState extends State<RootPage> {
   }
 
   void logoutCallback() {
-    if (_userId != null || _userId != "") {
-      print("Redirreción");
-      final route = MaterialPageRoute(builder: (context) {
-        return Login(
-          auth: widget.auth,
-          loginCallback: loginCallback,
-        );
-      });
-      Navigator.push(context, route);
-    }
-
+   
     setState(() {
       authStatus = AuthStatus.NOT_LOGGED_IN;
       _userId = "";

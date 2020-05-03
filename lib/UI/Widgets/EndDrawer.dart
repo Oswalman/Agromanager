@@ -5,13 +5,9 @@ Widget EndDrawer(
     BuildContext context, BaseAuth auth, VoidCallback logoutCallback) {
   signOut() async {
     try {
-      auth.getCurrentUser().then((user) {
-        print("-------------IDDDDD---------------");
-        print(user?.uid);
-      });
-
       await auth.signOut();
       logoutCallback();
+      Navigator.popUntil(context, ModalRoute.withName("/"));
     } catch (e) {
       print(e);
     }
