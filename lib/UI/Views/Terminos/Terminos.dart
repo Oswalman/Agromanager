@@ -24,11 +24,12 @@ class TerminosWidget extends State<Terminos> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppbarWidget(title: "Inicio"),
+        appBar: AppbarWidget(title: "Términos y Condiciones"),
         endDrawer: EndDrawer(context, widget.auth, widget.logoutCallback),
         drawer: DrawerWidget(
             context, widget.auth, widget.logoutCallback, widget.userId),
-        body: Stack(
+        body: SingleChildScrollView(
+            child: Stack(
           children: <Widget>[
             Center(
                 child: Container(
@@ -70,6 +71,6 @@ class TerminosWidget extends State<Terminos> {
                       ],
                     ))),
           ],
-        ));
+        )));
   }
 }

@@ -32,7 +32,7 @@ class _AddInsumoState extends State<AddInsumo> {
   Widget build(BuildContext context) {
     var productProvider = Provider.of<CRUDTipoInsumo>(context);
     return Scaffold(
-        appBar: AppbarWidget(title: "Inventario"),
+        appBar: AppbarWidget(title: "Nuevo tipo de insumo"),
         endDrawer: EndDrawer(context, widget.auth, widget.logoutCallback),
         drawer: DrawerWidget(
             context, widget.auth, widget.logoutCallback, widget.userId),

@@ -9,6 +9,11 @@ class Api {
     return _db.collection(path).getDocuments();
   }
 
+  Stream<QuerySnapshot> getDataSpecific(
+      String path, String field, String valor) {
+    return _db.collection(path).where(field, isEqualTo: valor).snapshots();
+  }
+
   Stream<QuerySnapshot> streamDataCollection(String path) {
     return _db.collection(path).snapshots();
   }

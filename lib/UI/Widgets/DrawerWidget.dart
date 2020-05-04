@@ -8,7 +8,6 @@ import 'package:Agromanager/core/viewmodels/BaseAuth.dart';
 
 Widget DrawerWidget(BuildContext context, BaseAuth auth,
     VoidCallback logoutCallback, String userId) {
-      
   return Drawer(
     child: ListView(
       // Important: Remove any padding from the ListView.
@@ -37,7 +36,6 @@ Widget DrawerWidget(BuildContext context, BaseAuth auth,
                             color: Colors.white, height: 5, fontSize: 20))),
               ),
               Container(
-                  height: MediaQuery.of(context).size.height * 0.377,
                   child: Padding(
                       padding: const EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 0.0),
                       child: Column(children: <Widget>[
@@ -100,87 +98,97 @@ Widget DrawerWidget(BuildContext context, BaseAuth auth,
                           },
                         ),
                       ]))),
-              Container(
-                  decoration:
-                      BoxDecoration(color: Color(0xff000000).withOpacity(0.23)),
-                  child: Padding(
-                      padding: const EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 0.0),
-                      child: Column(
-                        children: <Widget>[
-                          Divider(),
-                          ListTile(
-                              title: Text('¿QUIENES SOMOS?',
-                                  style: TextStyle(color: Colors.white))),
-                          ListTile(
-                              title: Text('AYUDA',
-                                  style: TextStyle(color: Colors.white))),
-                          ListTile(
-                            title: Text('TÉRMINOS Y CONDICIONES',
-                                style: TextStyle(color: Colors.white)),
-                            onTap: () {
-                              final route =
-                                  MaterialPageRoute(builder: (context) {
-                                return Terminos();
-                              });
-                              Navigator.push(context, route);
-                            },
-                          ),
-                          Row(children: <Widget>[
-                            IconButton(
-                                icon: new Icon(
-                                  FontAwesomeIcons.instagram,
-                                  color: Colors.white,
-                                ),
-                                onPressed: () async {
-                                  const url = 'https://github.com/Oswalman';
-                                  if (await canLaunch(url)) {
-                                    await launch(url);
-                                  } else {
-                                    throw 'Could not launch $url';
-                                  }
-                                }),
-                            IconButton(
-                                icon: new Icon(
-                                  FontAwesomeIcons.twitter,
-                                  color: Colors.white,
-                                ),
-                                onPressed: () async {
-                                  const url = 'https://github.com/Oswalman';
-                                  if (await canLaunch(url)) {
-                                    await launch(url);
-                                  } else {
-                                    throw 'No se pudo lanzar $url';
-                                  }
-                                }),
-                            IconButton(
-                                icon: new Icon(
-                                  FontAwesomeIcons.facebook,
-                                  color: Colors.white,
-                                ),
-                                onPressed: () async {
-                                  const url = 'https://github.com/Oswalman';
-                                  if (await canLaunch(url)) {
-                                    await launch(url);
-                                  } else {
-                                    throw 'No se pudo lanzar  $url';
-                                  }
-                                }),
-                            IconButton(
-                                icon: new Icon(
-                                  FontAwesomeIcons.globeAmericas,
-                                  color: Colors.white,
-                                ),
-                                onPressed: () async {
-                                  const url = 'http://agromanager.ddns.net';
-                                  if (await canLaunch(url)) {
-                                    await launch(url);
-                                  } else {
-                                    throw 'No se pudo lanzar  $url';
-                                  }
-                                })
-                          ])
-                        ],
-                      )))
+              Expanded(
+                  child: Align(
+                      alignment: Alignment.bottomCenter,
+                      child: Container(
+                          decoration: BoxDecoration(
+                              color: Color(0xff000000).withOpacity(0.23)),
+                          child: Padding(
+                              padding: const EdgeInsets.fromLTRB(
+                                  20.0, 0.0, 20.0, 0.0),
+                              child: Column(
+                                children: <Widget>[
+                                  Divider(),
+                                  ListTile(
+                                      title: Text('¿QUIENES SOMOS?',
+                                          style:
+                                              TextStyle(color: Colors.white))),
+                                  ListTile(
+                                      title: Text('AYUDA',
+                                          style:
+                                              TextStyle(color: Colors.white))),
+                                  ListTile(
+                                    title: Text('TÉRMINOS Y CONDICIONES',
+                                        style: TextStyle(color: Colors.white)),
+                                    onTap: () {
+                                      final route =
+                                          MaterialPageRoute(builder: (context) {
+                                        return Terminos();
+                                      });
+                                      Navigator.push(context, route);
+                                    },
+                                  ),
+                                  Row(children: <Widget>[
+                                    IconButton(
+                                        icon: new Icon(
+                                          FontAwesomeIcons.instagram,
+                                          color: Colors.white,
+                                        ),
+                                        onPressed: () async {
+                                          const url =
+                                              'https://github.com/Oswalman';
+                                          if (await canLaunch(url)) {
+                                            await launch(url);
+                                          } else {
+                                            throw 'Could not launch $url';
+                                          }
+                                        }),
+                                    IconButton(
+                                        icon: new Icon(
+                                          FontAwesomeIcons.twitter,
+                                          color: Colors.white,
+                                        ),
+                                        onPressed: () async {
+                                          const url =
+                                              'https://github.com/Oswalman';
+                                          if (await canLaunch(url)) {
+                                            await launch(url);
+                                          } else {
+                                            throw 'No se pudo lanzar $url';
+                                          }
+                                        }),
+                                    IconButton(
+                                        icon: new Icon(
+                                          FontAwesomeIcons.facebook,
+                                          color: Colors.white,
+                                        ),
+                                        onPressed: () async {
+                                          const url =
+                                              'https://github.com/Oswalman';
+                                          if (await canLaunch(url)) {
+                                            await launch(url);
+                                          } else {
+                                            throw 'No se pudo lanzar  $url';
+                                          }
+                                        }),
+                                    IconButton(
+                                        icon: new Icon(
+                                          FontAwesomeIcons.globeAmericas,
+                                          color: Colors.white,
+                                        ),
+                                        onPressed: () async {
+                                          const url =
+                                              'http://agromanager.ddns.net';
+                                          if (await canLaunch(url)) {
+                                            await launch(url);
+                                          } else {
+                                            throw 'No se pudo lanzar  $url';
+                                          }
+                                        })
+                                  ])
+                                ],
+                              )))))
             ],
           ),
         ),

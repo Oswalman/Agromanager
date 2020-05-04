@@ -10,7 +10,7 @@ class CRUDProducto extends ChangeNotifier {
 
   List<Producto> producto;
 
-  Future<List<Producto>> fetchTipoInsumo() async {
+  Future<List<Producto>> fetchProducto() async {
     var result = await _api.getDataCollection('Productos');
     producto = result.documents
         .map((doc) => Producto.fromMap(doc.data, doc.documentID))
@@ -18,26 +18,30 @@ class CRUDProducto extends ChangeNotifier {
     return producto;
   }
 
-  Stream<QuerySnapshot> fetchTipoInsumosAsStream() {
+  Stream<QuerySnapshot> fetchProductoAsStream() {
     return _api.streamDataCollection('Productos');
   }
 
-  Future<Producto> getTipoInsumoById(String id) async {
+  Stream<QuerySnapshot> fetchProductoWithCondition(String tipo) {
+    return _api.getDataSpecific('Productos', "idTipoInsumo", tipo);
+  }
+
+  Future<Producto> getProductoById(String id) async {
     var doc = await _api.getDocumentById('Productos', id);
     return Producto.fromMap(doc.data, doc.documentID);
   }
 
-  Future removeTipoInsumo(String id) async {
+  Future removeProducto(String id) async {
     await _api.removeDocument('Productos', id);
     return;
   }
 
-  Future updateTipoInsumo(Producto data, String id) async {
+  Future updateProducto(Producto data, String id) async {
     await _api.updateDocument('Productos', data.toJson(), id);
     return;
   }
 
-  Future addTipoInsumo(Producto data) async {
+  Future addProducto(Producto data) async {
     var result = await _api.addDocument('Productos', data.toJson());
 
     return;

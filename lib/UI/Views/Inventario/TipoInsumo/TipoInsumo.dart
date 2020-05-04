@@ -97,6 +97,7 @@ class TipoInsumoViewWidget extends State<TipoInsumoView> {
                                               fontSize: 22,
                                               fontStyle: FontStyle.italic),
                                         ),
+                                        Icon(Icons.chevron_right)
                                       ],
                                     ),
                                   )

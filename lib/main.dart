@@ -3,6 +3,7 @@ import 'UI/Views/Login/Login.dart';
 import 'core/viewmodels/BaseAuth.dart';
 import 'UI/root_page.dart';
 import 'package:Agromanager/core/viewmodels/TipoInsumoCrud.dart';
+import 'package:Agromanager/core/viewmodels/ProductoCrud.dart';
 import './locator.dart';
 import 'package:provider/provider.dart';
 
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
             home: new RootPage(auth: new Auth())),
         providers: [
           ChangeNotifierProvider(builder: (_) => locator<CRUDTipoInsumo>()),
+          ChangeNotifierProvider(builder: (_) => locator<CRUDProducto>()),
         ]);
   }
 }
