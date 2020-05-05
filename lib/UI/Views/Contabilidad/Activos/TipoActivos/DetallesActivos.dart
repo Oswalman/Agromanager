@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 import 'package:Agromanager/UI/Widgets/Appbar.dart';
 import 'package:Agromanager/UI/Widgets/EndDrawer.dart';
 import 'package:Agromanager/UI/Widgets/Fondo.dart';
-import 'package:Agromanager/UI/Views/Inventario/TipoInsumo/NewInsumo.dart';
+import 'package:Agromanager/UI/Views/Contabilidad/Activos/TipoActivos/NewActivo.dart';
 import 'package:Agromanager/core/viewmodels/BaseAuth.dart';
 import 'package:Agromanager/UI/Widgets/DrawerWidget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -38,8 +38,8 @@ class UserSearchDelegate extends SearchDelegate {
   }
 }
 
-class DetallesInsumo extends StatefulWidget {
-  DetallesInsumo(
+class DetallesActivos extends StatefulWidget {
+  DetallesActivos(
       {Key key, this.auth, this.userId, this.logoutCallback, this.tipoInsumo})
       : super(key: key);
 
@@ -49,24 +49,24 @@ class DetallesInsumo extends StatefulWidget {
   final TipoInsumo tipoInsumo;
 
   @override
-  State<StatefulWidget> createState() => new DetallesInsumoWidget();
+  State<StatefulWidget> createState() => new DetallesActivosWidget();
 }
 
-class DetallesInsumoWidget extends State<DetallesInsumo> {
+class DetallesActivosWidget extends State<DetallesActivos> {
   List<Producto> producto;
   @override
   Widget build(BuildContext context) {
     final productProvider = Provider.of<CRUDProducto>(context);
 
     return Scaffold(
-        appBar: AppbarWidget(title: "INSUMOS"),
+        appBar: AppbarWidget(title: "ACTIVOS"),
         endDrawer: EndDrawer(context, widget.auth, widget.logoutCallback),
         drawer: DrawerWidget(
             context, widget.auth, widget.logoutCallback, widget.userId),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             final route = MaterialPageRoute(builder: (context) {
-              return NewInsumo(
+              return NewActivo(
                   auth: widget.auth,
                   userId: widget.userId,
                   logoutCallback: widget.logoutCallback,

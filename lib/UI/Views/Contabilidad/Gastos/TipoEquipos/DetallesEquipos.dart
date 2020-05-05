@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 import 'package:Agromanager/UI/Widgets/Appbar.dart';
 import 'package:Agromanager/UI/Widgets/EndDrawer.dart';
 import 'package:Agromanager/UI/Widgets/Fondo.dart';
-import 'package:Agromanager/UI/Views/Inventario/TipoInsumo/NewInsumo.dart';
+import 'package:Agromanager/UI/Views/Contabilidad/Gastos/TipoEquipos/NewEquipos.dart';
 import 'package:Agromanager/core/viewmodels/BaseAuth.dart';
 import 'package:Agromanager/UI/Widgets/DrawerWidget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -38,8 +38,8 @@ class UserSearchDelegate extends SearchDelegate {
   }
 }
 
-class DetallesInsumo extends StatefulWidget {
-  DetallesInsumo(
+class DetallesEquipos extends StatefulWidget {
+  DetallesEquipos(
       {Key key, this.auth, this.userId, this.logoutCallback, this.tipoInsumo})
       : super(key: key);
 
@@ -49,10 +49,10 @@ class DetallesInsumo extends StatefulWidget {
   final TipoInsumo tipoInsumo;
 
   @override
-  State<StatefulWidget> createState() => new DetallesInsumoWidget();
+  State<StatefulWidget> createState() => new DetallesEquiposWidget();
 }
 
-class DetallesInsumoWidget extends State<DetallesInsumo> {
+class DetallesEquiposWidget extends State<DetallesEquipos> {
   List<Producto> producto;
   @override
   Widget build(BuildContext context) {
@@ -66,7 +66,7 @@ class DetallesInsumoWidget extends State<DetallesInsumo> {
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             final route = MaterialPageRoute(builder: (context) {
-              return NewInsumo(
+              return NewEquipos(
                   auth: widget.auth,
                   userId: widget.userId,
                   logoutCallback: widget.logoutCallback,

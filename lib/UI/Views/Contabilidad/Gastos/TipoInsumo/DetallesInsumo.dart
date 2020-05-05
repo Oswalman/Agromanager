@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 import 'package:Agromanager/UI/Widgets/Appbar.dart';
 import 'package:Agromanager/UI/Widgets/EndDrawer.dart';
 import 'package:Agromanager/UI/Widgets/Fondo.dart';
-import 'package:Agromanager/UI/Views/Inventario/TipoInsumo/NewInsumo.dart';
+import 'package:Agromanager/UI/Views/Contabilidad/Gastos/TipoInsumo/NewInsumo.dart';
 import 'package:Agromanager/core/viewmodels/BaseAuth.dart';
 import 'package:Agromanager/UI/Widgets/DrawerWidget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';

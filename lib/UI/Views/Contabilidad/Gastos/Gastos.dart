@@ -1,3 +1,7 @@
+import 'package:Agromanager/UI/Views/Contabilidad/Gastos/TipoAlimentacion/TipoAlimentacion.dart';
+import 'package:Agromanager/UI/Views/Contabilidad/Gastos/TipoEmpleados/TipoEmpleados.dart';
+import 'package:Agromanager/UI/Views/Contabilidad/Gastos/TipoEquipos/TipoEquipos.dart';
+import 'package:Agromanager/UI/Views/Contabilidad/Gastos/TipoInsumo/TipoInsumo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 //import 'package:Agromanager/UI/Views/Gastos/TipoInsumo/TipoInsumo.dart';
@@ -7,6 +11,8 @@ import 'package:Agromanager/UI/Widgets/Appbar.dart';
 import 'package:Agromanager/UI/Widgets/EndDrawer.dart';
 import 'package:Agromanager/UI/Widgets/Fondo.dart';
 import 'package:Agromanager/UI/Widgets/DrawerWidget.dart';
+
+import '../../../../core/models/tipoInsumoModel.dart';
 
 class Gastos extends StatefulWidget {
   Gastos({Key key, this.auth, this.userId, this.logoutCallback})
@@ -46,7 +52,16 @@ class GastosWidget extends State<Gastos> {
                               side: BorderSide(color: Color(0xff053D02))),
                           color: Color(0xffFFFFFF).withOpacity(0.5),
                           textColor: Colors.black,
-                          onPressed: () {},
+                          onPressed: () {
+                            final route = MaterialPageRoute(builder: (context) {
+                              return TipoInsumoView(
+                                auth: widget.auth,
+                                userId: widget.userId,
+                                logoutCallback: widget.logoutCallback,
+                              );
+                            });
+                            Navigator.push(context, route);
+                          },
                           child: Text('INSUMOS'),
                         ),
                       ),
@@ -60,7 +75,16 @@ class GastosWidget extends State<Gastos> {
                               side: BorderSide(color: Color(0xff053D02))),
                           color: Color(0xffFFFFFF).withOpacity(0.5),
                           textColor: Colors.black,
-                          onPressed: () {},
+                          onPressed: () {
+                            final route = MaterialPageRoute(builder: (context) {
+                              return TipoEquipos(
+                                auth: widget.auth,
+                                userId: widget.userId,
+                                logoutCallback: widget.logoutCallback,
+                              );
+                            });
+                            Navigator.push(context, route);
+                          },
                           child: Text('EQUIPOS'),
                         ),
                       ),
@@ -74,7 +98,16 @@ class GastosWidget extends State<Gastos> {
                               side: BorderSide(color: Color(0xff053D02))),
                           color: Color(0xffFFFFFF).withOpacity(0.5),
                           textColor: Colors.black,
-                          onPressed: () {},
+                          onPressed: () {
+                            final route = MaterialPageRoute(builder: (context) {
+                              return TipoEmpleados(
+                                auth: widget.auth,
+                                userId: widget.userId,
+                                logoutCallback: widget.logoutCallback,
+                              );
+                            });
+                            Navigator.push(context, route);
+                          },
                           child: Text('EMPLEADOS'),
                         ),
                       ),
@@ -88,7 +121,16 @@ class GastosWidget extends State<Gastos> {
                               side: BorderSide(color: Color(0xff053D02))),
                           color: Color(0xffFFFFFF).withOpacity(0.5),
                           textColor: Colors.black,
-                          onPressed: () {},
+                          onPressed: () {
+                            final route = MaterialPageRoute(builder: (context) {
+                              return TipoAlimentacion(
+                                auth: widget.auth,
+                                userId: widget.userId,
+                                logoutCallback: widget.logoutCallback,
+                              );
+                            });
+                            Navigator.push(context, route);
+                          },
                           child: Text('ALIMENTACIÓN'),
                         ),
                       ),

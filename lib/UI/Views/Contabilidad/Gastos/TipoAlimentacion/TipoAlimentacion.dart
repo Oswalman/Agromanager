@@ -4,16 +4,18 @@ import 'package:Agromanager/core/models/tipoInsumoModel.dart';
 import 'package:Agromanager/core/viewmodels/TipoInsumoCrud.dart';
 import 'package:provider/provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:Agromanager/UI/Views/Contabilidad/Activos/TipoActivos/AddTipoActivo.dart';
-import 'package:Agromanager/UI/Views/Contabilidad/Activos/TipoActivos/DetallesActivos.dart';
+
+import 'package:Agromanager/UI/Views/Contabilidad/Gastos/TipoAlimentacion/AddTipoAlimentacion.dart';
+import 'package:Agromanager/UI/Views/Contabilidad/Gastos/TipoAlimentacion/DetallesAlimentacion.dart';
+
 import 'package:Agromanager/core/viewmodels/BaseAuth.dart';
 import 'package:Agromanager/UI/Widgets/Appbar.dart';
 import 'package:Agromanager/UI/Widgets/EndDrawer.dart';
 import 'package:Agromanager/UI/Widgets/Fondo.dart';
 import 'package:Agromanager/UI/Widgets/DrawerWidget.dart';
 
-class Activos extends StatefulWidget {
-  Activos({Key key, this.auth, this.userId, this.logoutCallback})
+class TipoAlimentacion extends StatefulWidget {
+  TipoAlimentacion({Key key, this.auth, this.userId, this.logoutCallback})
       : super(key: key);
 
   //---------------------------
@@ -23,10 +25,10 @@ class Activos extends StatefulWidget {
   //---------------------------
 
   @override
-  State<StatefulWidget> createState() => new ActivosWidget();
+  State<StatefulWidget> createState() => new TipoAlimentacionWidget();
 }
 
-class ActivosWidget extends State<Activos> {
+class TipoAlimentacionWidget extends State<TipoAlimentacion> {
   List<TipoInsumo> tipoInsumo;
 
   @override
@@ -34,14 +36,14 @@ class ActivosWidget extends State<Activos> {
     final tipoProvider = Provider.of<CRUDTipoInsumo>(context);
 
     return Scaffold(
-        appBar: AppbarWidget(title: "ACTIVOS"),
+        appBar: AppbarWidget(title: "ALIMENTACIÓN"),
         endDrawer: EndDrawer(context, widget.auth, widget.logoutCallback),
         drawer: DrawerWidget(
             context, widget.auth, widget.logoutCallback, widget.userId),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             final route = MaterialPageRoute(builder: (context) {
-              return AddTipoActivo(
+              return AddTipoAlimentacion(
                 auth: widget.auth,
                 userId: widget.userId,
                 logoutCallback: widget.logoutCallback,
@@ -69,7 +71,7 @@ class ActivosWidget extends State<Activos> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (_) => DetallesActivos(
+                                  builder: (_) => DetallesAlimentacion(
                                       auth: widget.auth,
                                       userId: widget.userId,
                                       logoutCallback: widget.logoutCallback,
@@ -116,4 +118,3 @@ class ActivosWidget extends State<Activos> {
         ));
   }
 }
-

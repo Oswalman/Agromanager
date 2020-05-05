@@ -9,8 +9,8 @@ import 'package:Agromanager/UI/Widgets/EndDrawer.dart';
 import 'package:Agromanager/UI/Widgets/Fondo.dart';
 import 'package:Agromanager/UI/Widgets/DrawerWidget.dart';
 
-class NewInsumo extends StatefulWidget {
-  NewInsumo(
+class NewEquipos extends StatefulWidget {
+  NewEquipos(
       {Key key, this.auth, this.userId, this.logoutCallback, this.idTipoInsumo})
       : super(key: key);
 
@@ -22,10 +22,10 @@ class NewInsumo extends StatefulWidget {
   //---------------------------
 
   @override
-  State<StatefulWidget> createState() => _NewInsumoState();
+  State<StatefulWidget> createState() => _NewEquiposState();
 }
 
-class _NewInsumoState extends State<NewInsumo> {
+class _NewEquiposState extends State<NewEquipos> {
   final _formKey = GlobalKey<FormState>();
 
   String idTipoInsumo;

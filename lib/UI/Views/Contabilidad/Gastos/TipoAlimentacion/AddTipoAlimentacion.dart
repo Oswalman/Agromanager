@@ -9,8 +9,8 @@ import 'package:Agromanager/UI/Widgets/EndDrawer.dart';
 import 'package:Agromanager/UI/Widgets/Fondo.dart';
 import 'package:Agromanager/UI/Widgets/DrawerWidget.dart';
 
-class AddInsumo extends StatefulWidget {
-  AddInsumo({Key key, this.auth, this.userId, this.logoutCallback})
+class AddTipoAlimentacion extends StatefulWidget {
+  AddTipoAlimentacion({Key key, this.auth, this.userId, this.logoutCallback})
       : super(key: key);
 
   //---------------------------
@@ -20,10 +20,10 @@ class AddInsumo extends StatefulWidget {
   //---------------------------
 
   @override
-  _AddInsumoState createState() => _AddInsumoState();
+  _AddTipoAlimentacionState createState() => _AddTipoAlimentacionState();
 }
 
-class _AddInsumoState extends State<AddInsumo> {
+class _AddTipoAlimentacionState extends State<AddTipoAlimentacion> {
   final _formKey = GlobalKey<FormState>();
   String nombre;
   String descripcion;
@@ -32,15 +32,15 @@ class _AddInsumoState extends State<AddInsumo> {
   Widget build(BuildContext context) {
     var productProvider = Provider.of<CRUDTipoInsumo>(context);
     return Scaffold(
-        appBar: AppbarWidget(title: "Inventario"),
+        appBar: AppbarWidget(title: "ALIMENTACIÓN"),
         endDrawer: EndDrawer(context, widget.auth, widget.logoutCallback),
         drawer: DrawerWidget(
             context, widget.auth, widget.logoutCallback, widget.userId),
-        body: Padding(
-            padding: EdgeInsets.all(12),
-            child: Fondo(
-              context,
-              Form(
+        body: Fondo(
+            context,
+            Padding(
+              padding: EdgeInsets.all(12),
+              child: Form(
                 key: _formKey,
                 child: Column(
                   children: <Widget>[
