@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 import 'package:Agromanager/UI/Widgets/Appbar.dart';
 import 'package:Agromanager/UI/Widgets/EndDrawer.dart';
 import 'package:Agromanager/UI/Widgets/Fondo.dart';
-import 'package:Agromanager/UI/Views/Contabilidad/Gastos/TipoEquipos/NewEquipos.dart';
+import 'package:Agromanager/UI/Views/Contabilidad/Pasivos/TipoPasivos/NewPasivos.dart';
 import 'package:Agromanager/core/viewmodels/BaseAuth.dart';
 import 'package:Agromanager/UI/Widgets/DrawerWidget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -38,8 +38,8 @@ class UserSearchDelegate extends SearchDelegate {
   }
 }
 
-class DetallesEquipos extends StatefulWidget {
-  DetallesEquipos(
+class DestallesPasivos extends StatefulWidget {
+  DestallesPasivos(
       {Key key, this.auth, this.userId, this.logoutCallback, this.tipoInsumo})
       : super(key: key);
 
@@ -49,24 +49,24 @@ class DetallesEquipos extends StatefulWidget {
   final TipoInsumo tipoInsumo;
 
   @override
-  State<StatefulWidget> createState() => new DetallesEquiposWidget();
+  State<StatefulWidget> createState() => new DestallesPasivosWidget();
 }
 
-class DetallesEquiposWidget extends State<DetallesEquipos> {
+class DestallesPasivosWidget extends State<DestallesPasivos> {
   List<Producto> producto;
   @override
   Widget build(BuildContext context) {
     final productProvider = Provider.of<CRUDProducto>(context);
 
     return Scaffold(
-        appBar: AppbarWidget(title: "EQUIPOS"),
+        appBar: AppbarWidget(title: "PASIVOS"),
         endDrawer: EndDrawer(context, widget.auth, widget.logoutCallback),
         drawer: DrawerWidget(
             context, widget.auth, widget.logoutCallback, widget.userId),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             final route = MaterialPageRoute(builder: (context) {
-              return NewEquipos(
+              return NewActivo(
                   auth: widget.auth,
                   userId: widget.userId,
                   logoutCallback: widget.logoutCallback,

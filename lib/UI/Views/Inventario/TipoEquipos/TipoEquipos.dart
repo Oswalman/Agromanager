@@ -36,7 +36,7 @@ class TipoEquiposWidget extends State<TipoEquipos> {
     final tipoProvider = Provider.of<CRUDTipoInsumo>(context);
 
     return Scaffold(
-        appBar: AppbarWidget(title: "INSUMOS"),
+        appBar: AppbarWidget(title: "EQUIPOS"),
         endDrawer: EndDrawer(context, widget.auth, widget.logoutCallback),
         drawer: DrawerWidget(
             context, widget.auth, widget.logoutCallback, widget.userId),

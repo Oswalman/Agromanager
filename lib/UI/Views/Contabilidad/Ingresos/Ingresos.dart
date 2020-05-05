@@ -1,3 +1,5 @@
+import 'package:Agromanager/UI/Views/Contabilidad/Ingresos/TipoExternos/TipoExternos.dart';
+import 'package:Agromanager/UI/Views/Contabilidad/Ingresos/TipoVentas/TipoVentas.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 //import 'package:Agromanager/UI/Views/Ingresos/TipoInsumo/TipoInsumo.dart';
@@ -24,7 +26,7 @@ class IngresosWidget extends State<Ingresos> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppbarWidget(title: "Ingresos"),
+        appBar: AppbarWidget(title: "INGRESOS"),
         endDrawer: EndDrawer(context, widget.auth, widget.logoutCallback),
         drawer: DrawerWidget(
             context, widget.auth, widget.logoutCallback, widget.userId),
@@ -46,8 +48,17 @@ class IngresosWidget extends State<Ingresos> {
                               side: BorderSide(color: Color(0xff053D02))),
                           color: Color(0xffFFFFFF).withOpacity(0.5),
                           textColor: Colors.black,
-                          onPressed: () {},
-                          child: Text('INSUMOS'),
+                          onPressed: () {
+                            final route = MaterialPageRoute(builder: (context) {
+                              return TipoVentas(
+                                auth: widget.auth,
+                                userId: widget.userId,
+                                logoutCallback: widget.logoutCallback,
+                              );
+                            });
+                            Navigator.push(context, route);
+                          },
+                          child: Text('VENTAS'),
                         ),
                       ),
                     ),
@@ -60,8 +71,17 @@ class IngresosWidget extends State<Ingresos> {
                               side: BorderSide(color: Color(0xff053D02))),
                           color: Color(0xffFFFFFF).withOpacity(0.5),
                           textColor: Colors.black,
-                          onPressed: () {},
-                          child: Text('EQUIPOS'),
+                          onPressed: () {
+                            final route = MaterialPageRoute(builder: (context) {
+                              return TipoExternos(
+                                auth: widget.auth,
+                                userId: widget.userId,
+                                logoutCallback: widget.logoutCallback,
+                              );
+                            });
+                            Navigator.push(context, route);
+                          },
+                          child: Text('EXTERNOS'),
                         ),
                       ),
                     ),

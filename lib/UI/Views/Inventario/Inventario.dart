@@ -72,7 +72,16 @@ class InventarioWidget extends State<Inventario> {
                               side: BorderSide(color: Color(0xff053D02))),
                           color: Color(0xffFFFFFF).withOpacity(0.5),
                           textColor: Colors.black,
-                          onPressed: () {},
+                          onPressed: () {
+                            final route = MaterialPageRoute(builder: (context) {
+                              return TipoEquipos(
+                                auth: widget.auth,
+                                userId: widget.userId,
+                                logoutCallback: widget.logoutCallback,
+                              );
+                            });
+                            Navigator.push(context, route);
+                          },
                           child: Text('EQUIPOS'),
                         ),
                       ),

@@ -9,8 +9,8 @@ import 'package:Agromanager/UI/Widgets/EndDrawer.dart';
 import 'package:Agromanager/UI/Widgets/Fondo.dart';
 import 'package:Agromanager/UI/Widgets/DrawerWidget.dart';
 
-class AddTipoEquipos extends StatefulWidget {
-  AddTipoEquipos({Key key, this.auth, this.userId, this.logoutCallback})
+class AddTipoPasivos extends StatefulWidget {
+  AddTipoPasivos({Key key, this.auth, this.userId, this.logoutCallback})
       : super(key: key);
 
   //---------------------------
@@ -20,10 +20,10 @@ class AddTipoEquipos extends StatefulWidget {
   //---------------------------
 
   @override
-  _AddTipoEquiposState createState() => _AddTipoEquiposState();
+  _AddTipoPasivosState createState() => _AddTipoPasivosState();
 }
 
-class _AddTipoEquiposState extends State<AddTipoEquipos> {
+class _AddTipoPasivosState extends State<AddTipoPasivos> {
   final _formKey = GlobalKey<FormState>();
   String nombre;
   String descripcion;
@@ -32,7 +32,7 @@ class _AddTipoEquiposState extends State<AddTipoEquipos> {
   Widget build(BuildContext context) {
     var productProvider = Provider.of<CRUDTipoInsumo>(context);
     return Scaffold(
-        appBar: AppbarWidget(title: "EQUIPOS"),
+        appBar: AppbarWidget(title: "PASIVOS"),
         endDrawer: EndDrawer(context, widget.auth, widget.logoutCallback),
         drawer: DrawerWidget(
             context, widget.auth, widget.logoutCallback, widget.userId),

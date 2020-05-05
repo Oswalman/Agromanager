@@ -59,7 +59,7 @@ class DetallesEquiposWidget extends State<DetallesEquipos> {
     final productProvider = Provider.of<CRUDProducto>(context);
 
     return Scaffold(
-        appBar: AppbarWidget(title: "INSUMOS"),
+        appBar: AppbarWidget(title: "EQUIPOS"),
         endDrawer: EndDrawer(context, widget.auth, widget.logoutCallback),
         drawer: DrawerWidget(
             context, widget.auth, widget.logoutCallback, widget.userId),

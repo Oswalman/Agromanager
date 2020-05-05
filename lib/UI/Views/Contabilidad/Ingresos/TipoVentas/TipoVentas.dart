@@ -4,16 +4,18 @@ import 'package:Agromanager/core/models/tipoInsumoModel.dart';
 import 'package:Agromanager/core/viewmodels/TipoInsumoCrud.dart';
 import 'package:provider/provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:Agromanager/UI/Views/Contabilidad/Pasivos/TipoPasivos/AddTipoPasivos.dart';
-import 'package:Agromanager/UI/Views/Contabilidad/Pasivos/TipoPasivos/DetallesPasivos.dart';
+
+import 'package:Agromanager/UI/Views/Contabilidad/Ingresos/TipoVentas/AddTipoVentas.dart';
+import 'package:Agromanager/UI/Views/Contabilidad/Ingresos/TipoVentas/DetallesVentas.dart';
+
 import 'package:Agromanager/core/viewmodels/BaseAuth.dart';
 import 'package:Agromanager/UI/Widgets/Appbar.dart';
 import 'package:Agromanager/UI/Widgets/EndDrawer.dart';
 import 'package:Agromanager/UI/Widgets/Fondo.dart';
 import 'package:Agromanager/UI/Widgets/DrawerWidget.dart';
 
-class Pasivos extends StatefulWidget {
-  Pasivos({Key key, this.auth, this.userId, this.logoutCallback})
+class TipoVentas extends StatefulWidget {
+  TipoVentas({Key key, this.auth, this.userId, this.logoutCallback})
       : super(key: key);
 
   //---------------------------
@@ -23,10 +25,10 @@ class Pasivos extends StatefulWidget {
   //---------------------------
 
   @override
-  State<StatefulWidget> createState() => new PasivosWidget();
+  State<StatefulWidget> createState() => new TipoVentasWidget();
 }
 
-class PasivosWidget extends State<Pasivos> {
+class TipoVentasWidget extends State<TipoVentas> {
   List<TipoInsumo> tipoInsumo;
 
   @override
@@ -34,14 +36,14 @@ class PasivosWidget extends State<Pasivos> {
     final tipoProvider = Provider.of<CRUDTipoInsumo>(context);
 
     return Scaffold(
-        appBar: AppbarWidget(title: "PASIVOS"),
+        appBar: AppbarWidget(title: "VENTAS"),
         endDrawer: EndDrawer(context, widget.auth, widget.logoutCallback),
         drawer: DrawerWidget(
             context, widget.auth, widget.logoutCallback, widget.userId),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             final route = MaterialPageRoute(builder: (context) {
-              return AddTipoPasivos(
+              return AddTipoVentas(
                 auth: widget.auth,
                 userId: widget.userId,
                 logoutCallback: widget.logoutCallback,
@@ -69,7 +71,7 @@ class PasivosWidget extends State<Pasivos> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (_) => DestallesPasivos(
+                                  builder: (_) => DetallesVentas(
                                       auth: widget.auth,
                                       userId: widget.userId,
                                       logoutCallback: widget.logoutCallback,
